@@ -5,7 +5,7 @@ import {SERVER_API_URL} from '../../app.constants';
 
 import {JhiDateUtils} from 'ng-jhipster';
 
-import {ExecutiveEmployee} from './executive-employee.model';
+import {ExecutiveEmployee, EmployeeBonus} from './executive-employee.model';
 
 export type EntityResponseType = HttpResponse<ExecutiveEmployee>;
 
@@ -20,6 +20,18 @@ export class ExecutiveEmployeeService {
     find(id: any): Observable<EntityResponseType> {
         return this.http.get<ExecutiveEmployee>(`${this.resourceUrl}/${id}`, {observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
+    findBonusesForEmployee(id: any): Observable<HttpResponse<EmployeeBonus[]>> {
+        return this.http.get<EmployeeBonus[]>(`${this.resourceUrl}/${id}/salaries`, {observe: 'response'})
+            .map((res: HttpResponse<EmployeeBonus[]>) => {
+                const jsonResponse: EmployeeBonus[] = res.body;
+                const body = jsonResponse.map((bonus) => {
+                    bonus.bonusDate = this.dateUtils.convertLocalDateFromServer(bonus.bonusDate);
+                    return bonus;
+                });
+                return res.clone({body});
+            });
     }
 
     private convertResponse(res: EntityResponseType): EntityResponseType {
