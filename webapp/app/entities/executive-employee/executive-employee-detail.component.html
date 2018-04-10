@@ -31,6 +31,39 @@
             </dd>
         </dl>
     </div>
+    <div>
+        <h3>Bonuses summary</h3>
+        <table class="table table-sm table-hover table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Bonus date</th>
+                <th>Bonus amount</th>
+            </tr>
+            </thead>
+            <tr *ngFor="let bon of bonuses">
+                <td><span>{{bon.bonusDate| date:'mediumDate'}}</span></td>
+                <td><span>{{bon.bonusAmount| number:'1.2'}}</span></td>
+            </tr>
+            <tr *ngIf="!bonuses?.length">
+                <td colspan="2"><span>No data</span></td>
+            </tr>
+
+            <tfoot class="thead-light" *ngIf="bonuses?.length">
+            <tr>
+                <th>Average</th>
+                <th>{{getAverage() | number:'1.2'}}</th>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <th>{{getTotal() | number:'1.2'}}</th>
+            </tr>
+            <tr>
+                <th>Min</th>
+                <th>{{getMin() | number:'1.2'}}</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
     <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
