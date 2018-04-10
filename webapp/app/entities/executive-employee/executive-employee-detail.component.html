@@ -1,0 +1,40 @@
+<div *ngIf="employee">
+    <h2><span>Executive Employee</span> {{employee.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <div>
+        <h3>Basic info</h3>
+        <dl class="row-md jh-entity-details">
+            <dt><span>Employee Name</span></dt>
+            <dd>
+                <span>{{employee.employeeName}}</span>
+            </dd>
+            <dt><span>Hire Date</span></dt>
+            <dd>
+                <span>{{employee.hireDate | date:'mediumDate'}}</span>
+            </dd>
+            <dt><span>Position</span></dt>
+            <dd>
+                <span>{{employee.position}}</span>
+            </dd>
+            <dt><span>Email</span></dt>
+            <dd>
+                <span>{{employee.email}}</span>
+            </dd>
+            <dt><span>Phone Nr</span></dt>
+            <dd>
+                <span>{{employee.phoneNumber}}</span>
+            </dd>
+            <dt><span>Reserved parking space code</span></dt>
+            <dd>
+                <span>{{employee.parkingSpaceCode}}</span>
+            </dd>
+        </dl>
+    </div>
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+</div>

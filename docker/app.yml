@@ -1,0 +1,14 @@
+version: '2'
+services:
+    government_system-app:
+        image: government_system
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://government_system-postgresql:5432/government_system
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    government_system-postgresql:
+        extends:
+            file: postgresql.yml
+            service: government_system-postgresql
