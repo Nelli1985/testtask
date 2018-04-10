@@ -6,3 +6,12 @@ export class ExecutiveEmployee extends Employee {
     public phoneNumber: string;
     public parkingSpaceCode: string;
 }
+
+export class EmployeeBonus implements BaseEntity {
+    constructor(
+        public id?: number,
+        public bonusDate?: any,
+        public bonusAmount?: number,
+    ) {
+    }
+}
