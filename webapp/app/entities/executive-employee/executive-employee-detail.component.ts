@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 
 import {Big} from 'big.js';
-import {ExecutiveEmployee} from './executive-employee.model';
+import {ExecutiveEmployee, EmployeeBonus} from './executive-employee.model';
 import {ExecutiveEmployeeService} from './executive-employee.service';
 
 @Component({
