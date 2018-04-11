@@ -3,11 +3,11 @@ import {RouterModule} from '@angular/router';
 
 import {GovernmentSystemSharedModule} from '../../shared';
 import {
-    executiveEmployeeRoute,
+    executiveEmployeeRoute
 } from './';
 import {ExecutiveEmployeeService} from './executive-employee.service';
 import {ExecutiveEmployeeDetailComponent} from './executive-employee-detail.component';
-import {ExecutiveDetailResolver} from './executive-employee.route';
+import {ExecutiveDetailResolver, EmployeeBonusesResolver} from './executive-employee.route';
 
 const ENTITY_STATES = [
     ...executiveEmployeeRoute,
@@ -25,6 +25,7 @@ const ENTITY_STATES = [
     providers: [
         ExecutiveEmployeeService,
         ExecutiveDetailResolver,
+        EmployeeBonusesResolver
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

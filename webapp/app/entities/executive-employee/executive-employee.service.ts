@@ -23,7 +23,7 @@ export class ExecutiveEmployeeService {
     }
 
     findBonusesForEmployee(id: any): Observable<HttpResponse<EmployeeBonus[]>> {
-        return this.http.get<EmployeeBonus[]>(`${this.resourceUrl}/${id}/salaries`, {observe: 'response'})
+        return this.http.get<EmployeeBonus[]>(`${this.resourceUrl}/${id}/bonuses`, {observe: 'response'})
             .map((res: HttpResponse<EmployeeBonus[]>) => {
                 const jsonResponse: EmployeeBonus[] = res.body;
                 const body = jsonResponse.map((bonus) => {

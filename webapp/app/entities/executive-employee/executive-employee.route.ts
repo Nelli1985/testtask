@@ -3,7 +3,7 @@ import {UserRouteAccessService} from '../../shared';
 import {ExecutiveEmployeeDetailComponent} from './executive-employee-detail.component';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {ExecutiveEmployee} from './executive-employee.model';
+import {ExecutiveEmployee, EmployeeBonus} from './executive-employee.model';
 import {HttpResponse} from '@angular/common/http';
 import {ExecutiveEmployeeService} from './executive-employee.service';
 
@@ -20,6 +20,20 @@ export class ExecutiveDetailResolver implements Resolve<ExecutiveEmployee> {
             });
     }
 }
+@Injectable()
+export class EmployeeBonusesResolver implements Resolve<EmployeeBonus[]> {
+    constructor(private executiveEmployeeService: ExecutiveEmployeeService) {
+    }
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<EmployeeBonus[]> {
+        const id = route.params['id'];
+        return this.executiveEmployeeService.findBonusesForEmployee(id)
+            .map((employeeResponse: HttpResponse<EmployeeBonus[]>) => {
+                return employeeResponse.body;
+            });
+    }
+}
+
 export const executiveEmployeeRoute: Routes = [
     {
         path: 'executive-employee/:id',
@@ -31,6 +45,7 @@ export const executiveEmployeeRoute: Routes = [
         canActivate: [UserRouteAccessService],
         resolve: {
             employee: ExecutiveDetailResolver,
+            bonuses: EmployeeBonusesResolver
         }
     }
 ];

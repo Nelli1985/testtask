@@ -42,7 +42,7 @@
             </thead>
             <tr *ngFor="let bon of bonuses">
                 <td><span>{{bon.bonusDate| date:'mediumDate'}}</span></td>
-                <td><span>{{bon.bonusAmount| number:'1.2'}}</span></td>
+                <td><span>{{bon.bonus| number:'1.2'}}</span></td>
             </tr>
             <tr *ngIf="!bonuses?.length">
                 <td colspan="2"><span>No data</span></td>

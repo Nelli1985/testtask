@@ -9,6 +9,7 @@ import java.util.Set;
 
 import com.nortal.government.domain.employee.Employee;
 import com.nortal.government.domain.employee.EmployeeSalary;
+import com.nortal.government.domain.employee.EmployeeBonus;
 import com.nortal.government.domain.employee.enumeration.EmployeeType;
 
 public class EmployeeDTO implements Serializable {
@@ -20,8 +21,10 @@ public class EmployeeDTO implements Serializable {
     private EmployeeType type;
     private String position;
     private Set<EmployeeSalary> salaries;
+    private Set<EmployeeBonus> bonuses;
     private String sss = "sssssssssss";
     private List<String> salariesList = Arrays.asList("asda", "#");
+    private List<String> bonusesList = Arrays.asList("asda", "#");
 
     public Long getId() {
         return id;
@@ -67,8 +70,16 @@ public class EmployeeDTO implements Serializable {
         return salaries;
     }
 
+    public Set<EmployeeBonus> getBonuses() {
+        return bonuses;
+    }
+
     public void setSalaries(Set<EmployeeSalary> salaries) {
         this.salaries = salaries;
+    }
+
+    public void setBonuses(Set<EmployeeBonus> bonuses) {
+        this.bonuses = bonuses;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -101,6 +112,7 @@ public class EmployeeDTO implements Serializable {
             ", type='" + getType() + "'" +
             ", position='" + getPosition() + "'" +
             ", salaries='" + getSalaries() + "'" +
+            ", bonuses='" + getBonuses() + "'" +
             "}";
     }
 
@@ -108,8 +120,16 @@ public class EmployeeDTO implements Serializable {
         return salariesList;
     }
 
+    public List<String> getBonusesList() {
+        return bonusesList;
+    }
+
     public void setSalariesList(List<String> salariesList) {
         this.salariesList = salariesList;
+    }
+
+    public void setBonusesList(List<String> bonusesList) {
+        this.bonusesList = bonusesList;
     }
 
     public String getSss() {
